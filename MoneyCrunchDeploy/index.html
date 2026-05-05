@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MoneyCrunch | Explore Debt Relief Options</title>
   <meta name="description" content="Explore debt relief options for $10,000+ in unsecured debt. Simple, secure, and no-obligation." />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{--bg:#0f172a;--panel:#111827;--green:#22c55e;--green2:#16a34a;--text:#f8fafc;--muted:#cbd5e1;--ink:#111827;--line:#e5e7eb}*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f8fafc;color:var(--ink);line-height:1.5}.container{width:min(1120px,92%);margin:auto}.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:18px}.brand{display:flex;align-items:center;gap:10px}.brand-mark{width:42px;height:42px;border-radius:14px;background:var(--green);display:grid;place-items:center;font-weight:900;color:#052e16}.brand-name{display:block;font-size:22px;font-weight:900}.brand-tag{display:block;font-size:12px;color:#64748b}.nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.nav a,.footer a{color:#15803d;text-decoration:none;font-weight:700}.hero{background:linear-gradient(135deg,#0f172a,#1e293b);color:var(--text);padding:72px 0}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:start}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:#86efac}h1{font-size:clamp(36px,5vw,62px);line-height:1.02;margin:10px 0 18px}h2{font-size:30px;margin:0 0 10px}.hero-text{font-size:20px;color:var(--muted)}.trust-row{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.trust-row span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 12px}.btn,button{display:inline-block;border:0;border-radius:14px;background:var(--green);color:#052e16;padding:13px 18px;font-weight:900;text-decoration:none;cursor:pointer}.btn:hover,button:hover{background:var(--green2);color:#fff}.btn-small{padding:10px 14px}.card{background:#fff;color:var(--ink);border-radius:24px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.24)}form{display:grid;gap:13px}label{display:grid;gap:7px;font-weight:700}input,select{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px}.form-note,.privacy-note{font-size:12px;color:#475569}.hidden-field{display:none}.benefits,.how-it-works{padding:56px 0;background:#fff}.how-it-works{background:#f8fafc}.section-intro{max-width:760px;margin-bottom:24px}.benefit-grid,.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.benefit-card,.step-card{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}.step-number{width:36px;height:36px;border-radius:999px;background:#dcfce7;color:#166534;display:grid;place-items:center;font-weight:900}.footer{background:#0f172a;color:#cbd5e1;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer-brand{font-weight:900;color:#fff;font-size:20px}.footer-copy{max-width:620px;color:#cbd5e1}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.fine-print{font-size:12px;color:#94a3b8;max-width:850px}@media(max-width:850px){.hero-grid,.benefit-grid,.steps-grid{grid-template-columns:1fr}.topbar-inner{align-items:flex-start;flex-direction:column}}
+  </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div class="brand-text">
-          <span class="brand-name">MoneyCrunch</span>
-          <span class="brand-tag">Debt Relief Options</span>
-        </div>
+        <div class="brand-text"><span class="brand-name">MoneyCrunch</span><span class="brand-tag">Debt Relief Options</span></div>
       </div>
-      <a href="#lead-form" class="btn btn-small">Check My Options</a>
+      <nav class="nav">
+        <a href="#lead-form">Check My Options</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
     </div>
   </header>
 
@@ -27,178 +30,39 @@
         <div class="hero-copy">
           <p class="eyebrow">For U.S. residents with $10,000+ in unsecured debt</p>
           <h1>Struggling with debt? Explore your relief options in minutes.</h1>
-          <p class="hero-text">
-            If you are dealing with credit card debt, personal loans, or collections,
-            you may have options worth reviewing. Start with a quick, secure form.
-          </p>
-
-          <div class="trust-row">
-            <span>Secure &amp; Confidential</span>
-            <span>No Obligation</span>
-            <span>Trusted Partner Network</span>
-          </div>
-
-          <a href="#lead-form" class="btn btn-large">Check My Options</a>
+          <p class="hero-text">If you are dealing with credit card debt, personal loans, or collections, you may have options worth reviewing. Start with a quick, secure form.</p>
+          <div class="trust-row"><span>Secure &amp; Confidential</span><span>No Obligation</span><span>Trusted Partner Network</span></div>
+          <a href="#lead-form" class="btn">Check My Options</a>
         </div>
 
-        <div class="hero-card">
-          <div class="card">
-            <p class="card-label">See if you may qualify</p>
-            <h2>Quick Debt Check</h2>
-            <p class="card-text">Complete the short form to explore available options.</p>
-
-            <form
-              name="moneycrunch-leads"
-              method="POST"
-              action="thank-you.html"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              id="lead-form"
-            >
-              <input type="hidden" name="form-name" value="moneycrunch-leads" />
-
-              <p class="hidden-field">
-                <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-              </p>
-
-              <label for="debtRange">Total Debt Amount</label>
-              <select id="debtRange" name="debt_range" required>
-                <option value="">Select amount</option>
-                <option>$10,000 - $20,000</option>
-                <option>$20,000 - $50,000</option>
-                <option>$50,000+</option>
-              </select>
-
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="first_name" required />
-
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="last_name" required />
-
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required />
-
-              <label for="state">State</label>
-              <select id="state" name="state" required>
-                <option value="">Select state</option>
-                <option>Alabama</option>
-                <option>Alaska</option>
-                <option>Arizona</option>
-                <option>Arkansas</option>
-                <option>California</option>
-                <option>Colorado</option>
-                <option>Connecticut</option>
-                <option>Delaware</option>
-                <option>Florida</option>
-                <option>Georgia</option>
-                <option>Hawaii</option>
-                <option>Idaho</option>
-                <option>Illinois</option>
-                <option>Indiana</option>
-                <option>Iowa</option>
-                <option>Kansas</option>
-                <option>Kentucky</option>
-                <option>Louisiana</option>
-                <option>Maine</option>
-                <option>Maryland</option>
-                <option>Massachusetts</option>
-                <option>Michigan</option>
-                <option>Minnesota</option>
-                <option>Mississippi</option>
-                <option>Missouri</option>
-                <option>Montana</option>
-                <option>Nebraska</option>
-                <option>Nevada</option>
-                <option>New Hampshire</option>
-                <option>New Jersey</option>
-                <option>New Mexico</option>
-                <option>New York</option>
-                <option>North Carolina</option>
-                <option>North Dakota</option>
-                <option>Ohio</option>
-                <option>Oklahoma</option>
-                <option>Oregon</option>
-                <option>Pennsylvania</option>
-                <option>Rhode Island</option>
-                <option>South Carolina</option>
-                <option>South Dakota</option>
-                <option>Tennessee</option>
-                <option>Texas</option>
-                <option>Utah</option>
-                <option>Vermont</option>
-                <option>Virginia</option>
-                <option>Washington</option>
-                <option>West Virginia</option>
-                <option>Wisconsin</option>
-                <option>Wyoming</option>
-              </select>
-
-              <button type="submit" class="btn btn-submit">Check My Options</button>
-
-              <p class="form-note">
-                By clicking “Check My Options”, you agree to be contacted by MoneyCrunch and its partners via phone, SMS, and email, including through automated technology, regarding debt relief services. Consent is not required as a condition of purchase. Message and data rates may apply.
-              </p>
-
-              <p class="privacy-note">
-                Your information is secure and will only be shared within our trusted partner network in accordance with our
-                <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.
-              </p>
-            </form>
-          </div>
+        <div class="card">
+          <p class="eyebrow">See if you may qualify</p>
+          <h2>Quick Debt Check</h2>
+          <p>Complete the short form to explore available options.</p>
+          <form name="moneycrunch-leads" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" id="lead-form">
+            <input type="hidden" name="form-name" value="moneycrunch-leads" />
+            <p class="hidden-field"><label>Don’t fill this out if you're human: <input name="bot-field" /></label></p>
+            <label>Total Debt Amount<select name="debt_range" required><option value="">Select amount</option><option>$10,000 - $20,000</option><option>$20,000 - $50,000</option><option>$50,000+</option></select></label>
+            <label>First Name<input type="text" name="first_name" required /></label>
+            <label>Last Name<input type="text" name="last_name" required /></label>
+            <label>Email<input type="email" name="email" required /></label>
+            <label>Phone Number<input type="tel" name="phone" required /></label>
+            <label>State<select name="state" required><option value="">Select state</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Illinois</option><option>Michigan</option><option>New York</option><option>North Carolina</option><option>Ohio</option><option>Pennsylvania</option><option>Texas</option><option>Virginia</option><option>Washington</option><option>Wisconsin</option></select></label>
+            <button type="submit">Submit Securely</button>
+            <p class="form-note">By clicking “Submit Securely”, you agree to be contacted by MoneyCrunch and its partners via phone, SMS, and email regarding debt relief options. Consent is not required as a condition of purchase. Message and data rates may apply.</p>
+            <p class="privacy-note">Your information is handled according to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p>
+          </form>
         </div>
       </div>
     </section>
 
     <section class="benefits">
       <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">Why people use MoneyCrunch</p>
-          <h2>A simple first step when debt feels overwhelming</h2>
-        </div>
-
+        <div class="section-intro"><p class="eyebrow">Why people use MoneyCrunch</p><h2>A simple first step when debt feels overwhelming</h2></div>
         <div class="benefit-grid">
-          <div class="benefit-card">
-            <h3>Quick Review</h3>
-            <p>Start with a short form to explore whether debt relief options may fit your situation.</p>
-          </div>
-          <div class="benefit-card">
-            <h3>Private &amp; Secure</h3>
-            <p>Your information is handled with care and only used to match you with relevant providers.</p>
-          </div>
-          <div class="benefit-card">
-            <h3>No Unrealistic Promises</h3>
-            <p>We focus on helping you explore real options, not making claims we cannot guarantee.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="how-it-works">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">How it works</p>
-          <h2>Three simple steps</h2>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Tell us about your debt</h3>
-            <p>Share a few basic details like debt range, state, and contact information.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>We review your information</h3>
-            <p>Your lead is routed through our process so you can explore available next-step options.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Explore your options</h3>
-            <p>A relevant partner may contact you to discuss debt relief solutions that may apply.</p>
-          </div>
+          <div class="benefit-card"><h3>Quick Review</h3><p>Start with a short form to explore whether debt relief options may fit your situation.</p></div>
+          <div class="benefit-card"><h3>Private &amp; Secure</h3><p>Your information is handled with care and used to match you with relevant providers.</p></div>
+          <div class="benefit-card"><h3>No Unrealistic Promises</h3><p>We help you explore options. We do not guarantee savings, approvals, or outcomes.</p></div>
         </div>
       </div>
     </section>
@@ -209,14 +73,11 @@
       <div>
         <p class="footer-brand">MoneyCrunch</p>
         <p class="footer-copy">Explore debt relief options with a simple, secure first step.</p>
+        <p class="footer-copy">Contact: <a href="mailto:hello@moneycrunchusa.com">hello@moneycrunchusa.com</a></p>
+        <p class="fine-print">MoneyCrunch is an informational lead-generation site. We are not a lender, law firm, credit repair company, or financial advisor.</p>
       </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+      <div class="footer-links"><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
