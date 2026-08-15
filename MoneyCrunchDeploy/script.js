@@ -1,6 +1,4 @@
-const AWIN_AFFILIATE_URL = "AWIN_CURDEBT_LINK_HERE";
-const LANDING_PAGE = "moneycrunch-curadebt-affiliate-precheck";
-const LOG_STORAGE_KEY = "moneycrunch_affiliate_precheck_logs";
+const AWIN_AFFILIATE_URL = "https://www.awin1.com/cread.php?awinmid=88085&awinaffid=2893463";
 
 const excludedStates = new Set(["CT", "GA", "IL", "KS", "ME", "NH", "NV", "OR", "SC", "VT", "WV"]);
 const securedOnlyTypes = new Set(["secured debt", "student loan", "auto loan", "mortgage"]);
@@ -18,7 +16,7 @@ const states = [
 ];
 
 const requiredDisclosure =
-  "Free quote requests are only available in eligible states. The program is for those with at least $10,000 in unsecured or tax debt. We cannot help with secured debts such as mortgages, auto loans, or student loans. Applicants must be 21 or older and have a source of income to make program payments. After submitting your info, CuraDebt will contact you with your free savings estimate.";
+  "Free consultations are only available in eligible states. This referral flow is generally intended for people with at least $10,000 in unsecured or tax debt. It cannot help with secured debts such as mortgages or auto loans, or with student loans. Applicants must be 21 or older and have a source of income to make program payments. CuraDebt will explain available options and request any required contact consent on its website.";
 
 const stateSelect = document.querySelector("#state");
 const form = document.querySelector("#eligibilityForm");
@@ -35,8 +33,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = readFormData();
   const result = evaluateEligibility(data);
-  const logEntry = writeLeadLog(data, result, false);
-  renderResult(data, result, logEntry.id);
+  renderResult(data, result);
 });
 
 function readFormData() {
@@ -45,8 +42,7 @@ function readFormData() {
     state: stateSelect.value,
     debtTypes: Array.from(document.querySelectorAll("input[name='debtType']:checked")).map((input) => input.value),
     debtRange: document.querySelector("input[name='debtRange']:checked")?.value ?? "",
-    incomeConfirmed: document.querySelector("#incomeConfirmed").checked,
-    contactConsent: document.querySelector("#contactConsent").checked
+    incomeConfirmed: document.querySelector("#incomeConfirmed").checked
   };
 }
 
@@ -66,7 +62,6 @@ function evaluateEligibility(data) {
   if (!hasUnsecured && !hasTax) reasons.push("This partner flow is intended for unsecured debt or tax debt.");
   if (!meetsAmount) reasons.push("This partner flow is for at least $10,000 in unsecured or tax debt.");
   if (!data.incomeConfirmed) reasons.push("Applicants must have a source of income to make program payments.");
-  if (!data.contactConsent) reasons.push("Consent is required before a partner can contact you.");
 
   return {
     qualified: reasons.length === 0,
@@ -76,7 +71,7 @@ function evaluateEligibility(data) {
   };
 }
 
-function renderResult(data, result, logId) {
+function renderResult(data, result) {
   resultCard.hidden = false;
   resultCard.className = `result-card ${result.qualified ? "qualified" : "disqualified"}`;
 
@@ -95,70 +90,15 @@ function renderResult(data, result, logId) {
     <h3>You meet the basic eligibility screen.</h3>
     <p>${result.priority ? "Your answers indicate $20,000+ in unsecured debt, which is the strongest fit for this referral flow." : "Your answers meet the basic screen for this referral flow."}</p>
     <div class="required-disclosure">${requiredDisclosure}</div>
-    <button class="btn btn-submit" type="button" id="partnerRedirectButton">Continue to partner quote request</button>
-    <p class="small-note">MoneyCrunch will log that the redirect button was clicked. The partner will handle any quote request after you continue.</p>
+    <button class="btn btn-submit" type="button" id="partnerRedirectButton">Continue to free consultation</button>
+    <p class="small-note">You will continue to CuraDebt's website, where CuraDebt handles the consultation request and any required contact consent. MoneyCrunch may earn compensation if you complete a qualifying action, at no additional cost to you.</p>
   `;
 
   document.querySelector("#partnerRedirectButton").addEventListener("click", () => {
-    markRedirectClicked(logId, data, result);
-    if (AWIN_AFFILIATE_URL === "AWIN_CURDEBT_LINK_HERE") {
-      if (!document.querySelector("#placeholderNotice")) {
-        resultCard.insertAdjacentHTML(
-          "beforeend",
-          "<p class=\"small-note\" id=\"placeholderNotice\">Tracking placeholder is still configured. Replace AWIN_CURDEBT_LINK_HERE with the approved Awin tracking link before launch.</p>"
-        );
-      }
-      return;
-    }
     window.location.assign(AWIN_AFFILIATE_URL);
   });
 
   resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function writeLeadLog(data, result, redirectClicked) {
-  const entry = buildLogEntry(data, result, redirectClicked);
-  const logs = readLogs();
-  logs.push(entry);
-  localStorage.setItem(LOG_STORAGE_KEY, JSON.stringify(logs));
-  console.info("MoneyCrunch affiliate precheck log", entry);
-  return entry;
-}
-
-function markRedirectClicked(logId, data, result) {
-  const logs = readLogs();
-  const index = logs.findIndex((entry) => entry.id === logId);
-  const updated = buildLogEntry(data, result, true);
-  updated.id = logId;
-  if (index >= 0) logs[index] = updated;
-  else logs.push(updated);
-  localStorage.setItem(LOG_STORAGE_KEY, JSON.stringify(logs));
-  console.info("MoneyCrunch affiliate redirect clicked", updated);
-}
-
-function buildLogEntry(data, result, redirectClicked) {
-  const params = new URLSearchParams(window.location.search);
-  return {
-    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    timestamp: new Date().toISOString(),
-    source: params.get("source") || params.get("utm_source") || "direct",
-    campaign: params.get("campaign") || params.get("utm_campaign") || "curadebt-awin",
-    landingPage: LANDING_PAGE,
-    selectedState: data.state,
-    selectedDebtType: data.debtTypes.join(", "),
-    selectedDebtRange: data.debtRange,
-    qualifiedDisqualifiedResult: result.label,
-    redirectClicked: redirectClicked ? "yes" : "no",
-    affiliateRedirectUrlPlaceholder: AWIN_AFFILIATE_URL
-  };
-}
-
-function readLogs() {
-  try {
-    return JSON.parse(localStorage.getItem(LOG_STORAGE_KEY) || "[]");
-  } catch {
-    return [];
-  }
 }
 
 function escapeHtml(value) {
