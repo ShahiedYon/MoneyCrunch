@@ -17,17 +17,19 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html" aria-label="MoneyCrunch home">
-        <span class="brand-mark">MC</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img"><path d="M10 33V16l8 11 6-9 6 9 8-11v17"/><path class="brand-spark" d="m31 12 3 3 6-7"/></svg>
+        </span>
         <span class="brand-text">
           <span class="brand-name">MoneyCrunch</span>
-          <span class="brand-tag">Independent referral guide</span>
+          <span class="brand-tag">Debt-relief eligibility guide</span>
         </span>
       </a>
       <nav class="nav" aria-label="Page sections">
-        <a href="#checker">Check eligibility</a>
         <a href="#learn">How it works</a>
-        <a href="contact.html">Contact</a>
+        <a href="#faq">Common questions</a>
         <a href="privacy.html">Privacy</a>
+        <a href="#checker" class="nav-cta">Check eligibility</a>
       </nav>
     </div>
   </header>
@@ -36,22 +38,26 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Debt relief options, screened first</p>
-          <h1>See if you may qualify before we send you to a partner.</h1>
+          <p class="eyebrow">A clearer first step toward debt relief</p>
+          <h1>Understand your options before you share your details.</h1>
           <p class="hero-text">
-            MoneyCrunch is an independent education and referral site. We help visitors review basic eligibility for
-            debt relief programs before continuing to a partner quote request.
+            MoneyCrunch helps U.S. consumers review basic program fit in about two minutes. Your answers stay on this
+            device, and we do not collect your name, phone number, or email address.
           </p>
           <div class="trust-row">
-            <span>Independent referral site</span>
-            <span>No government-program claims</span>
-            <span>No guaranteed savings</span>
-            <span>No loans or payday advances</span>
+            <span>Private pre-check</span>
+            <span>No credit check by MoneyCrunch</span>
+            <span>Clear eligibility rules</span>
           </div>
-          <a href="#checker" class="btn btn-large">Start eligibility check</a>
+          <a href="#checker" class="btn btn-large">Check my eligibility <span aria-hidden="true">→</span></a>
+          <p class="hero-note">About 2 minutes · No contact details required</p>
         </div>
 
         <aside class="process-card" aria-label="Eligibility overview">
+          <div class="process-card-head">
+            <span class="shield-icon" aria-hidden="true">✓</span>
+            <p><strong>A private first look</strong><small>Know what to expect before visiting a provider.</small></p>
+          </div>
           <div><span>1</span><p>Answer a few eligibility questions.</p></div>
           <div><span>2</span><p>Review state, debt type, debt amount, age, and income requirements.</p></div>
           <div><span>3</span><p>Continue to a partner only if the basic screen fits.</p></div>
@@ -59,15 +65,24 @@
       </div>
     </section>
 
+    <section class="trust-strip" aria-label="MoneyCrunch commitments">
+      <div class="container trust-strip-grid">
+        <div><strong>Private by design</strong><span>Your pre-check answers are not sent to MoneyCrunch.</span></div>
+        <div><strong>Independent guidance</strong><span>We explain fit without promising approval or savings.</span></div>
+        <div><strong>You stay in control</strong><span>Continue only if the basic screen makes sense for you.</span></div>
+      </div>
+    </section>
+
     <section class="checker-section" id="checker">
       <div class="container checker-grid">
         <div class="section-intro align-left">
-          <p class="eyebrow">Eligibility checker</p>
-          <h2>Basic debt relief pre-check</h2>
+          <p class="eyebrow">Private eligibility checker</p>
+          <h2>A simple pre-check, without the sales pressure.</h2>
           <p>
-            This screen decides whether to show the partner quote button. It is not an approval decision and does not
-            guarantee program availability or savings.
+            We compare your selections with the partner's basic referral criteria. This is not an approval decision,
+            and it does not guarantee program availability or savings.
           </p>
+          <div class="privacy-note"><span aria-hidden="true">✓</span><p><strong>Your answers stay in your browser.</strong><br />MoneyCrunch does not collect this form data.</p></div>
         </div>
 
         <div>
@@ -131,21 +146,37 @@
       <div class="container">
         <div class="section-intro">
           <p class="eyebrow">How MoneyCrunch works</p>
-          <h2>Education first, referral second.</h2>
+          <h2>Clear, private, and pressure-free.</h2>
         </div>
         <div class="benefit-grid">
           <article class="benefit-card">
-            <h3>We screen basics</h3>
-            <p>State, age, debt category, debt amount, and income are checked before a partner button appears.</p>
+            <span class="benefit-icon" aria-hidden="true">01</span><h3>Check the basics</h3>
+            <p>Review state, age, debt category, debt amount, and income before seeing a partner link.</p>
           </article>
           <article class="benefit-card">
-            <h3>We stay independent</h3>
-            <p>MoneyCrunch is not the debt relief provider and does not make approval, legal, credit, or savings decisions.</p>
+            <span class="benefit-icon" aria-hidden="true">02</span><h3>Understand our role</h3>
+            <p>MoneyCrunch is an independent education and referral site—not a lender or debt-relief provider.</p>
           </article>
           <article class="benefit-card">
-            <h3>Partners follow up</h3>
-            <p>If you continue and submit information on the partner's website, the partner may contact you under the consent terms shown there.</p>
+            <span class="benefit-icon" aria-hidden="true">03</span><h3>Choose your next step</h3>
+            <p>If you continue, review the provider's disclosures and consent terms before sharing information.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <div class="container faq-grid">
+        <div class="section-intro align-left faq-intro">
+          <p class="eyebrow">Common questions</p>
+          <h2>What you should know before continuing.</h2>
+          <p>Straight answers, without exaggerated claims or pressure.</p>
+        </div>
+        <div class="faq-list">
+          <details><summary>Does this pre-check affect my credit score?</summary><p>No. MoneyCrunch does not request a credit report or perform a credit check. A provider may explain its own verification process if you continue.</p></details>
+          <details><summary>Does MoneyCrunch collect my personal information?</summary><p>No contact details are collected in this pre-check. Your selections are processed in your browser. If you continue, the provider's privacy policy applies.</p></details>
+          <details><summary>Is MoneyCrunch the debt-relief provider?</summary><p>No. MoneyCrunch is an independent education and referral site. CuraDebt reviews inquiries and may connect eligible consumers with independent providers.</p></details>
+          <details><summary>How does MoneyCrunch earn money?</summary><p>We may receive compensation when someone completes a qualifying action through a partner link. This does not increase the visitor's cost or change the pre-check result.</p></details>
         </div>
       </div>
     </section>
