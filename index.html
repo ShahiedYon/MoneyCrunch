@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://moneycrunchusa.netlify.app/" />
   <meta name="twitter:card" content="summary" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
@@ -29,7 +29,7 @@
         <a href="#learn">How it works</a>
         <a href="#faq">Common questions</a>
         <a href="privacy.html">Privacy</a>
-        <a href="#checker" class="nav-cta">Check eligibility</a>
+        <button class="nav-cta" type="button" data-open-checker>Check eligibility</button>
       </nav>
     </div>
   </header>
@@ -49,19 +49,17 @@
             <span>No credit check by MoneyCrunch</span>
             <span>Clear eligibility rules</span>
           </div>
-          <a href="#checker" class="btn btn-large">Check my eligibility <span aria-hidden="true">→</span></a>
+          <button type="button" class="btn btn-large" data-open-checker>Check my eligibility <span aria-hidden="true">→</span></button>
           <p class="hero-note">About 2 minutes · No contact details required</p>
         </div>
 
-        <aside class="process-card" aria-label="Eligibility overview">
-          <div class="process-card-head">
+        <figure class="hero-visual">
+          <img src="assets/moneycrunch-hero.webp" alt="A couple calmly reviewing their household finances together at home" width="1693" height="929" />
+          <figcaption>
             <span class="shield-icon" aria-hidden="true">✓</span>
-            <p><strong>A private first look</strong><small>Know what to expect before visiting a provider.</small></p>
-          </div>
-          <div><span>1</span><p>Answer a few eligibility questions.</p></div>
-          <div><span>2</span><p>Review state, debt type, debt amount, age, and income requirements.</p></div>
-          <div><span>3</span><p>Continue to a partner only if the basic screen fits.</p></div>
-        </aside>
+            <p><strong>A private first look</strong><small>See whether the basics fit before visiting a provider.</small></p>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -73,19 +71,28 @@
       </div>
     </section>
 
-    <section class="checker-section" id="checker">
-      <div class="container checker-grid">
-        <div class="section-intro align-left">
-          <p class="eyebrow">Private eligibility checker</p>
-          <h2>A simple pre-check, without the sales pressure.</h2>
-          <p>
-            We compare your selections with the partner's basic referral criteria. This is not an approval decision,
-            and it does not guarantee program availability or savings.
-          </p>
-          <div class="privacy-note"><span aria-hidden="true">✓</span><p><strong>Your answers stay in your browser.</strong><br />MoneyCrunch does not collect this form data.</p></div>
-        </div>
-
+    <section class="quick-start" id="checker">
+      <div class="container quick-start-inner">
         <div>
+          <p class="eyebrow">Ready when you are</p>
+          <h2>Find out if the basics fit—without hunting for the form.</h2>
+          <p>Open the private two-minute pre-check from here, the header, or the mobile action bar.</p>
+        </div>
+        <button type="button" class="btn btn-large" data-open-checker>Start private pre-check <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <dialog class="eligibility-dialog" id="eligibilityDialog" aria-labelledby="eligibilityTitle">
+      <div class="dialog-shell">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">Private eligibility checker</p>
+            <h2 id="eligibilityTitle">Check the basics in about two minutes.</h2>
+            <p>Your answers stay in this browser. This is not an approval decision.</p>
+          </div>
+          <button class="dialog-close" id="closeEligibilityDialog" type="button" aria-label="Close eligibility checker">×</button>
+        </div>
+        <div class="dialog-content">
           <form class="checker-card" id="eligibilityForm">
             <fieldset>
               <legend>Age confirmation</legend>
@@ -134,13 +141,12 @@
               </label>
             </fieldset>
 
-          <button class="btn btn-submit" type="submit">Review eligibility</button>
+            <button class="btn btn-submit" type="submit">Review eligibility</button>
           </form>
-
           <section class="result-card" id="resultCard" hidden aria-live="polite"></section>
         </div>
       </div>
-    </section>
+    </dialog>
 
     <section class="benefits" id="learn">
       <div class="container">
@@ -220,6 +226,8 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <button class="mobile-checker-cta" type="button" data-open-checker>Check my eligibility <span aria-hidden="true">→</span></button>
+
+  <script src="script.js"></script>
 </body>
 </html>

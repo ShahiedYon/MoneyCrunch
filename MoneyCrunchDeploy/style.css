@@ -97,7 +97,6 @@ select {
 
 .brand-mark svg { width: 34px; height: 34px; fill: none; stroke: var(--gold); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
 .brand-mark .brand-spark { stroke: #f5d68e; stroke-width: 2.4; }
-}
 
 .brand-text {
   display: flex;
@@ -123,13 +122,13 @@ select {
 }
 
 .nav a,
+.nav button,
 .footer a {
   font-weight: 650;
 }
 
 .nav a { color: #40536a; }
-.nav-cta { border-radius: 999px; background: var(--panel); padding: 10px 17px; color: #ffffff !important; }
-}
+.nav-cta { border: 0; border-radius: 999px; background: var(--panel); padding: 10px 17px; color: #ffffff !important; cursor: pointer; }
 
 .hero {
   padding: 88px 0 74px;
@@ -219,6 +218,23 @@ p {
 
 .hero-note { margin: 13px 0 0; color: #6f8195; font-size: 13px; font-weight: 650; }
 
+.hero-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 470px;
+  margin: 0;
+  border-radius: 26px;
+  background: #dce7eb;
+  box-shadow: 0 30px 70px rgba(22, 47, 75, 0.2);
+}
+
+.hero-visual img { width: 100%; height: 100%; min-height: 470px; object-fit: cover; object-position: 52% center; display: block; }
+.hero-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(5, 20, 35, 0.64)); pointer-events: none; }
+.hero-visual figcaption { position: absolute; z-index: 1; right: 20px; bottom: 20px; left: 20px; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(8, 29, 48, 0.82); padding: 15px; backdrop-filter: blur(12px); }
+.hero-visual figcaption p, .hero-visual figcaption strong, .hero-visual figcaption small { display: block; margin: 0; color: #fff; }
+.hero-visual figcaption small { margin-top: 2px; color: #d5e0ea; font-size: 12px; }
+.shield-icon { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 999px; background: var(--teal); color: #fff; font-weight: 900; }
+
 .btn-small {
   padding: 12px 18px;
   font-size: 14px;
@@ -298,6 +314,25 @@ p {
 .legal-page {
   padding: 88px 0;
 }
+
+.quick-start { padding: 58px 0; background: #edf3f8; }
+.quick-start-inner { display: flex; align-items: center; justify-content: space-between; gap: 34px; }
+.quick-start h2 { max-width: 720px; margin: 0 0 10px; color: var(--panel); font-size: clamp(1.8rem, 4vw, 2.65rem); line-height: 1.1; }
+.quick-start p:not(.eyebrow) { max-width: 700px; margin: 0; color: var(--muted); }
+.quick-start .btn { flex: 0 0 auto; }
+
+.eligibility-dialog { width: min(760px, calc(100% - 28px)); max-height: min(88vh, 900px); margin: auto; border: 0; border-radius: 24px; padding: 0; color: var(--text); box-shadow: 0 35px 100px rgba(3, 16, 30, .38); }
+.eligibility-dialog::backdrop { background: rgba(3, 16, 30, .7); backdrop-filter: blur(5px); }
+.dialog-shell { background: #f4f7fa; }
+.dialog-head { position: sticky; z-index: 2; top: 0; display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid #dce5ee; background: rgba(255,255,255,.96); padding: 22px 24px 18px; }
+.dialog-head h2 { margin: 0 0 6px; color: var(--panel); font-size: 1.65rem; line-height: 1.12; }
+.dialog-head p:not(.eyebrow) { margin: 0; color: var(--muted); font-size: 14px; }
+.dialog-head .eyebrow { margin-bottom: 8px; padding: 6px 10px; }
+.dialog-close { flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid #d8e1ea; border-radius: 999px; background: #fff; color: var(--panel); font-size: 28px; line-height: 1; cursor: pointer; }
+.dialog-content { padding: 22px 24px 28px; }
+.dialog-content .checker-card { padding: 0; border: 0; background: transparent; box-shadow: none; }
+.dialog-content .result-card { box-shadow: none; }
+.mobile-checker-cta { display: none; }
 
 .checker-section, .faq-section { background: #edf3f8; }
 
@@ -616,6 +651,8 @@ input[type="radio"] {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .quick-start-inner { align-items: flex-start; flex-direction: column; }
 }
 
 @media (max-width: 640px) {
@@ -625,7 +662,7 @@ input[type="radio"] {
     padding: 10px 0;
   }
 
-  .brand-tag, .nav a:not(.nav-cta) { display: none; }
+  .brand-tag, .nav a { display: none; }
   .nav-cta { padding: 9px 13px; font-size: 13px; }
 
   .hero {
@@ -633,8 +670,10 @@ input[type="radio"] {
   }
 
   .hero h1 {
-    font-size: 40px;
+    font-size: 39px;
   }
+
+  .hero-visual, .hero-visual img { min-height: 330px; }
 
   .option-grid,
   .radio-grid {
@@ -647,6 +686,13 @@ input[type="radio"] {
     padding: 20px;
   }
 
-  .checker-section, .benefits, .faq-section, .disclosures { padding: 64px 0; }
+  .quick-start, .benefits, .faq-section, .disclosures { padding: 58px 0; }
   .trust-strip-grid div { padding: 22px 20px; }
+
+  body { padding-bottom: 72px; }
+  .mobile-checker-cta { position: fixed; z-index: 30; right: 12px; bottom: 12px; left: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; border: 0; border-radius: 14px; background: linear-gradient(135deg, var(--teal), var(--teal-dark)); color: #fff; font-weight: 800; box-shadow: 0 16px 36px rgba(4, 40, 54, .35); }
+  .dialog-head { padding: 18px 18px 14px; }
+  .dialog-content { padding: 18px; }
+  .dialog-head h2 { font-size: 1.35rem; }
+  .eligibility-dialog { max-height: 92vh; }
 }

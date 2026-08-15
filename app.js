@@ -21,6 +21,25 @@ const requiredDisclosure =
 const stateSelect = document.querySelector("#state");
 const form = document.querySelector("#eligibilityForm");
 const resultCard = document.querySelector("#resultCard");
+const eligibilityDialog = document.querySelector("#eligibilityDialog");
+const closeEligibilityDialog = document.querySelector("#closeEligibilityDialog");
+
+document.querySelectorAll("[data-open-checker]").forEach((button) => {
+  button.addEventListener("click", () => {
+    if (typeof eligibilityDialog.showModal === "function") {
+      eligibilityDialog.showModal();
+      window.setTimeout(() => document.querySelector("#ageConfirmed").focus(), 0);
+    }
+  });
+});
+
+closeEligibilityDialog.addEventListener("click", () => eligibilityDialog.close());
+eligibilityDialog.addEventListener("click", (event) => {
+  const bounds = eligibilityDialog.getBoundingClientRect();
+  const clickedOutside = event.clientX < bounds.left || event.clientX > bounds.right ||
+    event.clientY < bounds.top || event.clientY > bounds.bottom;
+  if (clickedOutside) eligibilityDialog.close();
+});
 
 states.forEach(([value, label]) => {
   const option = document.createElement("option");
